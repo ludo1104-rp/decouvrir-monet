@@ -8,7 +8,7 @@ Petit QCM pour iPad : on découvre la vie et les tableaux de Claude Monet.
 - « Mes questions difficiles » et « Mes progrès » (enregistrés sur l'appareil).
 - Fonctionne hors ligne : tout est dans `index.html`.
 
-Version 1.0 — Application produite par IA à partir d'un document Internet (page Wikipédia « Claude Monet »). Des erreurs peuvent survenir.
+Version 1.1 — Application produite par IA à partir d'un document Internet (page Wikipédia « Claude Monet »). Des erreurs peuvent survenir.
 Application développée par Claude AI sous la supervision de Riga Ludovic.
 
 Tableaux : Wikimedia Commons, domaine public.
