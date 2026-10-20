@@ -12,3 +12,7 @@ Version 1.1 — Application produite par IA à partir d'un document Internet (pa
 Application développée par Claude AI sous la supervision de Riga Ludovic.
 
 Tableaux : Wikimedia Commons, domaine public.
+
+## Licence
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr) : partage et adaptation permis, en citant l'auteur, sans usage commercial, sous la même licence. Voir le fichier `LICENSE`.
