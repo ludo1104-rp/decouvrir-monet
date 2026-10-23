@@ -276,6 +276,8 @@ body.sheet-open .qzone.cote .img-btn img{max-height:max(140px,calc(var(--imgH,32
 .zoom .round{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;background:#FFFFFF;color:#1F2933}
 .sheet-sub{line-height:1.4}
 
+/* Étiquette « Nouveau » à côté du bouton Simple (couleurs fixes, lisibles en clair et en sombre) */
+.nouveau{margin-left:8px;padding:1px 8px;border-radius:999px;font-size:12px;line-height:1.6;background:#FAF0C8;color:#1F2933}
 @media (prefers-reduced-motion:reduce){
   .enter,.choice.pop,.choice.shake,.streak{animation:none}
   .sheet,.segs i,.tile,.choice{transition:none}
@@ -487,6 +489,11 @@ function setZoom(z){document.documentElement.style.setProperty('--z',z);store('t
 setZoom(zoomLevel());
 function styleActuel(){return store('style')==='simple'?'simple':'couleurs';}
 function setStyle(s){store('style',s);document.body.classList.toggle('simple',s==='simple');}
+/* Étiquette « Nouveau » sur le bouton Simple (sans animation) : disparaît dès qu'on touche un style, ou après 3 ouvertures. */
+const NOUVEAU_SIMPLE=(()=>{const n=store('nouveau-simple')||0;if(n>=0&&n<3)store('nouveau-simple',n+1);return n>=0&&n<3;})();
+function marquerNouveau(){const b=document.querySelector('[data-sty="simple"]');if(!b||!NOUVEAU_SIMPLE||store('nouveau-simple')===-1)return;
+  if(!b.querySelector('.nouveau'))b.insertAdjacentHTML('beforeend','<span class="nouveau">Nouveau</span>');
+  document.querySelectorAll('[data-sty]').forEach(x=>x.addEventListener('click',()=>{store('nouveau-simple',-1);document.querySelectorAll('.nouveau').forEach(e=>e.remove());}));}
 setStyle(styleActuel());
 
 const DONNEES_VERSION=1;
@@ -817,6 +824,7 @@ function renderHome(){
   $('#helpBtn').addEventListener('click',openHelp);
   $$('[data-z]',main).forEach(b=>b.addEventListener('click',()=>{setZoom(b.dataset.z);$$('[data-z]',main).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));layout();}));
   $$('[data-sty]',main).forEach(b=>b.addEventListener('click',()=>{setStyle(b.dataset.sty);$$('[data-sty]',main).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));
+  marquerNouveau();
   $$('.tile',main).forEach(b=>b.addEventListener('click',()=>({jouer:startQuiz,difficiles:startDifficiles,progres:renderProgres})[b.dataset.mode]()));
 }
 
