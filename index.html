@@ -829,7 +829,7 @@ function preparerManches(source,boites,nbManches,nParBoite,cle,prefixe){
    ===================================================================== */
 function mentions(){
   const src=APP.sourceInternet?' à partir d’un document Internet':(APP.sourceAutre?' '+APP.sourceAutre:'');
-  return '<div class="foot">Version '+esc(APP.version)+'<br>Application produite par IA'+esc(src)+'. Des erreurs peuvent survenir.<br>Application développée par Claude AI sous la supervision de Ludo (@rprof_1).<br>Texte inspiré de la page Wikipédia « Claude Monet ». Tableaux : Wikimedia Commons, domaine public.<br>Licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" rel="noopener" style="color:inherit">CC BY-NC-SA 4.0</a>.</div>';}
+  return '<div class="foot">Version '+esc(APP.version)+'<br>Application produite par IA'+esc(src)+'. Des erreurs peuvent survenir.<br>Application développée par Claude AI sous la supervision de Ludo<b style="font-weight:700;font-size:1.35em;line-height:0">.</b> (@rprof_1).<br>Texte inspiré de la page Wikipédia « Claude Monet ». Tableaux : Wikimedia Commons, domaine public.<br>Licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" rel="noopener" style="color:inherit">CC BY-NC-SA 4.0</a>.</div>';}
 
 const parId={};QUESTIONS.forEach(q=>{parId[q.id]=q;});
 function difficilesQ(){return difficiles().filter(k=>k.indexOf('q:')===0&&parId[k.slice(2)]).map(k=>k.slice(2));}
